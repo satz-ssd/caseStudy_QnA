@@ -9,20 +9,31 @@ import {
   Row,
 } from "react-bootstrap";
 import "./Home.css";
-// import TableData from "./TableData_test";
 import DeleteConfirmation from "./deleteConfirm/DeleteConfirm";
+// import TableData from "./TableData_test";
+
 function Home() {
-  const [mergeState, setmergeState] = useState();
+  // const [mergeState, setmergeState] = useState();
+
+  //delete modal
+  const [delIndex, setdelIndex] = useState()
+  const [isShowDelete, setisShowDelete] = useState(false)
+  
+  //send del index to modal
+  const sendDelIndex=(index)=>{
+    setdelIndex(index)
+  }
+  // console.log('sendDelIndex',delIndex);
+
 
   const updateToMergeState = () => {
-    // debugger;s
+    // debugger
     const serverData = {
       ...primaryInfo,
       questions: questions,
     };
     console.log("SD", serverData);
   };
-  // console.log("merged data", mergeState);
 
   const [primaryInfo, setprimaryInfo] = useState({
     candidateName: "",
@@ -248,9 +259,20 @@ function Home() {
                   </Col>
                   <Col md={3} className="addButton">
                     <Button
-                      onClick={() => {
-                        getDeleteDataIndex(index);
+                      onClick={() => {sendDelIndex(index);
+                        {setisShowDelete(true)}}}
+                      className="btnbtn float-end"
+                      style={{
+                        color: "white",
+                        backgroundColor: "#FAA81D",
+                        border: "none",
                       }}
+                    >
+                      <i className="fas fa-trash"></i>&nbsp;Delete
+                    </Button>
+                    {/* <Button
+                      onClick={() => {
+                        getDeleteDataIndex(index);{isShowDelete(true)}}}
                       className="btnbtn"
                       style={{
                         color: "white",
@@ -258,8 +280,8 @@ function Home() {
                         border: "none",
                       }}
                     >
-                      <i class="fas fa-trash"></i>&nbsp;Delete
-                    </Button>
+                      <i className="fas fa-trash"></i>&nbsp;Delete
+                    </Button> */}
                   </Col>
                 </Row>
               );
@@ -353,6 +375,7 @@ function Home() {
           </Row>
         </Container>
       </Form>
+     {isShowDelete && <DeleteConfirmation setisShowDelete={setisShowDelete} delIndex={delIndex} getDeleteDataIndex={getDeleteDataIndex} />} 
     </div>
   );
 }

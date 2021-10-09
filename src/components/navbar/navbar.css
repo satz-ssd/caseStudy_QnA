@@ -1,0 +1,14 @@
+.navbar__main{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.searchbutton{
+    text-decoration: none;
+    background-color: #FAA81D;
+}
+.searchbuttonText{
+    text-decoration: none;
+    color: white;
+}

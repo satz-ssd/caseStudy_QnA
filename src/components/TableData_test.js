@@ -8,7 +8,6 @@ function TableData(props) {
         props.getDeleteDataIndex(index) 
         };
     return (
-
         <div>
 
         {
