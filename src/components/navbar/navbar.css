@@ -1,4 +1,34 @@
-.navbar__main{
+.navbar_main{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.errormsg{
+    color: red;
+    font-size: 12px;
+}
+.searchbutton{
+    background-color: #FAA81D;
+    border: none;
+}
+
+.searchbutton:hover{
+    background-color: #FAA81D;
+    border: none;
+}
+
+#searchid{
+    text-decoration: none;
+    color: white;
+}
+
+
+
+
+
+
+/* .navbar__main{
     position: sticky;
     top: 0;
     z-index: 100;
@@ -11,4 +41,4 @@
 .searchbuttonText{
     text-decoration: none;
     color: white;
-}
+} */

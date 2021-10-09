@@ -10,7 +10,8 @@ import {
 } from "react-bootstrap";
 import "./Home.css";
 import DeleteConfirmation from "./deleteConfirm/DeleteConfirm";
-// import TableData from "./TableData_test";
+import SubmitModal from "./submitModal/SubmitModal";
+
 
 function Home() {
   // const [mergeState, setmergeState] = useState();
@@ -18,6 +19,7 @@ function Home() {
   //delete modal
   const [delIndex, setdelIndex] = useState()
   const [isShowDelete, setisShowDelete] = useState(false)
+  const [isShowSubmitModal, setisShowSubmitModal] = useState(false)
   
   //send del index to modal
   const sendDelIndex=(index)=>{
@@ -28,10 +30,32 @@ function Home() {
 
   const updateToMergeState = () => {
     // debugger
+    updateToQuestionData() 
+
     const serverData = {
       ...primaryInfo,
       questions: questions,
     };
+
+    //
+    setisShowSubmitModal(true)
+    //clearing all the fields
+    //clearing primary
+    setprimaryInfo({
+      candidateName: "",
+      department: "",
+      clientName: "",
+      technology: "",
+    })
+
+    setQuestions([])
+    
+    setsingleQuestion({
+      question: "",
+      answer: "",
+      difficultyLevel: "",
+    })
+
     console.log("SD", serverData);
   };
 
@@ -86,7 +110,6 @@ function Home() {
   };
 
   // update SinglequestionData to Questions array
-
   const updateToQuestionData = () => {
     let questionsCopy = [...questions];
     questionsCopy.push(singleQuestion);
@@ -100,6 +123,7 @@ function Home() {
   };
 
   //update question on typing
+  
   const updateQuestionOnTyping = (event, index) => {
     let newquestionsCopy = [...questions];
     newquestionsCopy[index].question = event.target.value;
@@ -270,18 +294,6 @@ function Home() {
                     >
                       <i className="fas fa-trash"></i>&nbsp;Delete
                     </Button>
-                    {/* <Button
-                      onClick={() => {
-                        getDeleteDataIndex(index);{isShowDelete(true)}}}
-                      className="btnbtn"
-                      style={{
-                        color: "white",
-                        backgroundColor: "#FAA81D",
-                        border: "none",
-                      }}
-                    >
-                      <i className="fas fa-trash"></i>&nbsp;Delete
-                    </Button> */}
                   </Col>
                 </Row>
               );
@@ -376,6 +388,7 @@ function Home() {
         </Container>
       </Form>
      {isShowDelete && <DeleteConfirmation setisShowDelete={setisShowDelete} delIndex={delIndex} getDeleteDataIndex={getDeleteDataIndex} />} 
+      {isShowSubmitModal && <SubmitModal setisShowSubmitModal={setisShowSubmitModal} />}
     </div>
   );
 }

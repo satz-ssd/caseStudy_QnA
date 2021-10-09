@@ -7,13 +7,14 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ErrorBoundary from "./components/error-boundary/ErrorBoundary";
 import SubmitModal from "./components/submitModal/SubmitModal";
 import Navbar_test from "./components/navbar/Navbar_test";
-import Search__Page from './components/searchPage/Search__Page';
+import SearchParent from "./components/searchPage/SearchParent";
+import PageNotFound from './components/pageNotFound/PageNotFound';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        {/* <ErrorBoundary> */}
+        <ErrorBoundary>
         <Navbar_test />
         {/* <SubmitModal /> */}
         <Switch>
@@ -21,11 +22,11 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/search">
-            {/* <Search__Page /> */}
-            <Search__Page />
+            <SearchParent />
           </Route>
+          <Route path="*" component={PageNotFound} />
         </Switch>
-        {/* </ErrorBoundary> */}
+        </ErrorBoundary>
       </div>
     </Router>
   );
