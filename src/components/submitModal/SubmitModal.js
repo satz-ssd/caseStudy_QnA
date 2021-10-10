@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { Button, Modal } from 'react-bootstrap'
 import './Modal.css';
 function SubmitModal(props) {
   // const [smShow, setSmShow] = useState(false);
-
 
   const handleClose = () => props.setisShowSubmitModal(false);
   const handleShow = () => props.setisShowSubmitModal(true);

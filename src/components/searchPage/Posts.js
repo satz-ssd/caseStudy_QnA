@@ -10,7 +10,7 @@ const Posts = ({ posts, loading }) => {
     return (
         <div>
             {
-                posts.map(posts => (<Card>
+                posts.map((posts,index) => (<Card key={index}>
                     <Card.Body>
                         <div>
                             <dl className="box">

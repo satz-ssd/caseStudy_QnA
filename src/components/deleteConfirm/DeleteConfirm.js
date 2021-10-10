@@ -1,10 +1,8 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Modal, Button } from "react-bootstrap";
  
 const DeleteConfirmation = (props) => {
   const indexo=props.delIndex;
-// console.log('indexo',indexo);
-
   const deleteFormData = (index) => {
     props.getDeleteDataIndex(index) 
     handleClose()
